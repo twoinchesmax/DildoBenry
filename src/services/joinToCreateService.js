@@ -146,8 +146,8 @@ export function formatChannelName(template, variables) {
             '{display_name}': sanitized.displayName || 'User',
             '{guildName}': sanitized.guildName || 'Server',
             '{guild_name}': sanitized.guildName || 'Server',
-            '{channelName}': sanitized.channelName || 'Voice Channel',
-            '{channel_name}': sanitized.channelName || 'Voice Channel',
+            '{channelName}': sanitized.channelName || 'Text Channel',
+            '{channel_name}': sanitized.channelName || 'Text Channel',
         };
 
         let formatted = safeTemplate;
@@ -514,7 +514,7 @@ export async function createTemporaryChannel(guild, member, options = {}) {
 
         const tempChannel = await guild.channels.create({
             name: channelName,
-            type: ChannelType.GuildVoice,
+            type: ChannelType.GuildText,
             parent: parentId,
             userLimit: userLimit === 0 ? undefined : userLimit,
             bitrate: bitrate || 64000,
@@ -530,7 +530,7 @@ export async function createTemporaryChannel(guild, member, options = {}) {
             ]
         });
 
-        logger.info(`Created temporary voice channel ${tempChannel.name} (${tempChannel.id}) for user ${member.user.tag}`);
+        logger.info(`Created temporary text channel ${tempChannel.name} (${tempChannel.id}) for user ${member.user.tag}`);
 
         return {
             id: tempChannel.id,
@@ -545,7 +545,7 @@ export async function createTemporaryChannel(guild, member, options = {}) {
         throw new TitanBotError(
             `Failed to create temporary channel: ${error.message}`,
             ErrorTypes.DISCORD_API,
-            'Failed to create your temporary voice channel. Please contact an administrator.'
+            'Failed to create your temporary text channel. Please contact an administrator.'
         );
     }
 }
