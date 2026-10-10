@@ -67,7 +67,7 @@ export default {
                         .setName("trigger_channel")
                         .setDescription("The Join to Create trigger channel to configure.")
                         .setRequired(true)
-                        .addChannelTypes(ChannelType.GuildVoice)
+                        .addChannelTypes(ChannelType.GuildText)
                 )
         ),
     category: "utility",
@@ -248,9 +248,7 @@ async function handleConfigSubcommand(interaction, client) {
                     inline: true
                 },
                 {
-                    name: 'Bitrate',
-                    value: `${(channelConfig.bitrate ?? currentConfig.bitrate ?? 64000) / 1000} kbps`,
-                    inline: true
+                   
                 }
             )
             .setFooter({ text: 'Use the buttons below to modify settings • Only one trigger channel is supported per guild' })
@@ -264,11 +262,6 @@ async function handleConfigSubcommand(interaction, client) {
         const limitButton = new ButtonBuilder()
             .setCustomId(`jtc_config_limit_${triggerChannel.id}`)
             .setLabel('👥 User Limit')
-            .setStyle(ButtonStyle.Primary);
-
-        const bitrateButton = new ButtonBuilder()
-            .setCustomId(`jtc_config_bitrate_${triggerChannel.id}`)
-            .setLabel('🎵 Bitrate')
             .setStyle(ButtonStyle.Primary);
 
         const deleteButton = new ButtonBuilder()
