@@ -169,7 +169,7 @@ async function handleSetupSubcommand(interaction, client) {
         logger.debug('Creating Join to Create trigger channel...');
         let triggerChannel = await interaction.guild.channels.create({
             name: 'Join to Create',
-            type: ChannelType.GuildVoice,
+            type: ChannelType.GuildText,
             parent: category?.id,
             userLimit: 0,
             bitrate: 64000,
