@@ -23,7 +23,7 @@ export default {
         .addSubcommand((subcommand) =>
             subcommand
                 .setName("setup")
-                .setDescription("Set up a new Join to Create voice channel.")
+                .setDescription("Set up a new Join to Create text channel.")
                 .addChannelOption((option) =>
                     option
                         .setName("category")
@@ -33,7 +33,7 @@ export default {
                 .addStringOption((option) =>
                     option
                         .setName("channel_name")
-                        .setDescription("Select a template for naming temporary voice channels.")
+                        .setDescription("Select a template for naming temporary text channels.")
                         .addChoices(
                             { name: "{username}'s Room (Default)", value: "{username}'s Room" },
                             { name: "{username}'s Channel", value: "{username}'s Channel" },
